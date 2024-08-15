@@ -1,5 +1,5 @@
 #include "menu.h"
-#include <windows.h>
+#include "system_functions.h"
 
 void separator()
 {
@@ -19,7 +19,7 @@ void menu(const char *title, option *options, int option_count, option *onExit)
 
     while (1)
     {
-        system("cls");
+        clear_screen();
         separator();
         printf("%s", title);
         separator();
@@ -51,7 +51,7 @@ void menu(const char *title, option *options, int option_count, option *onExit)
         {
             separator();
             printf("Opção inválida. Tente novamente.");
-            Sleep(2000);
+            sleep_system(2);
 
             separator();
         }
