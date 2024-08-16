@@ -34,6 +34,7 @@ void menu(const char *title, option *options, int option_count, option *onExit)
 
         printf("Escolha uma opção: ");
         scanf("%d", &choice);
+        getchar();
 
         if (choice == 0)
         {
@@ -45,6 +46,7 @@ void menu(const char *title, option *options, int option_count, option *onExit)
         }
         else if (choice > 0 && choice <= option_count)
         {
+            clear_screen();
             options[choice - 1].execute();
         }
         else
