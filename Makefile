@@ -51,6 +51,9 @@ $(BIN_DIR)/%.o: $(APPS_DIR)/%.c | $(BIN_DIR)/apps
 clean:
 	rm -rf $(BIN_DIR)
 
+mock:
+	echo "1;username;email;123;ADMIN" > $(BIN_DIR)/users.txt
+
 # Executar o programa
 run: $(BIN_DIR)/$(TARGET)
 	./$(BIN_DIR)/$(TARGET)
