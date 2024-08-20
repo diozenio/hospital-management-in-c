@@ -8,8 +8,10 @@
 #include <unistd.h>
 #include <stdlib.h>
 #endif
+#include <stdio.h>
 
 void sleep_system(int seconds);
 void clear_screen();
+void pause_system();
 
 #endif

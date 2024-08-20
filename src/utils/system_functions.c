@@ -17,3 +17,8 @@ void clear_screen() {
     system("clear");
     #endif
 }
+
+void pause_system() {
+    printf("Pressione Enter para continuar...");
+    getchar();
+}
