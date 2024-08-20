@@ -7,7 +7,8 @@
 typedef struct
 {
     char *label;
-    void (*execute)(void);
+    void (*execute)(void*);
+    void* data;
 } option;
 
 void separator();

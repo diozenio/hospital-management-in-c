@@ -10,7 +10,7 @@ void menu(const char *title, option *options, int option_count, option *onExit)
 {
     int choice;
 
-    option defaultExitOption = {"Exit", NULL};
+    option defaultExitOption = {"Sair", NULL, NULL};
 
     if (onExit == NULL)
     {
@@ -40,14 +40,20 @@ void menu(const char *title, option *options, int option_count, option *onExit)
         {
             if (onExit->execute != NULL)
             {
-                onExit->execute();
+                if (onExit->data != NULL)
+                    onExit->execute(onExit->data);
+                else
+                    onExit->execute(NULL);
             }
             break;
         }
         else if (choice > 0 && choice <= option_count)
         {
             clear_screen();
-            options[choice - 1].execute();
+            if (options[choice - 1].data != NULL)
+                options[choice - 1].execute(options[choice - 1].data);
+            else
+                options[choice - 1].execute(NULL);
         }
         else
         {
