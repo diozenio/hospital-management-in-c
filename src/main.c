@@ -1,21 +1,16 @@
-#include "utils/menu.h"
 #ifdef _WIN32
 #include <windows.h>
 #endif
 
-void sayHello()
-{
-    printf("Hello World!\n");
-}
+#include "apps/unauth_app.h"
 
 int main()
 {
     #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
     #endif
-    option options[] = {{"Say Hello", sayHello}};
 
-    menu("My Custom Menu", options, 1, NULL);
-
+    unauth_app();
+   
     return 0;
 }
