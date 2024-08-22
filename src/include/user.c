@@ -27,7 +27,7 @@ void save_user(User* user) {
     free(data);
 }
 
-User* createUser() {
+User* createUser(enum UserRole role) {
     User* user = (User*)malloc(sizeof(User));
     separator();
     
@@ -43,7 +43,7 @@ User* createUser() {
     scanf("%s", user->password);
     getchar();
 
-    user->role = ADMIN;
+    user->role = role;
     user->id = generate_random_id();
 
     save_user(user);

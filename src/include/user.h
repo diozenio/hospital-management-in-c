@@ -23,7 +23,7 @@ typedef struct {
   enum UserRole role;
 } User;
 
-User* createUser();
+User* createUser(enum UserRole role);
 User* findUserByEmail(char* email);
 
 char* getUserRole(enum UserRole role);
