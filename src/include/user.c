@@ -78,16 +78,35 @@ void parseUser(char* userData, User* user) {
 
 User* findUserByEmail(char* email) {
     char* data = read_file("src/bin/users.txt");
-    char* token = strtok(data, "\n");
-    while (token != NULL) {
+    char* line_start = data;
+    char* line_end;
+    
+    while ((line_end = strchr(line_start, '\n')) != NULL) {
+        *line_end = '\0'; 
+        
         User* user = (User*)malloc(sizeof(User));
         char* role = (char*)malloc(sizeof(char));
-        parseUser(token, user);
+        parseUser(line_start, user);
         free(role);
+        
         if (strcmp(user->email, email) == 0) {
             return user;
         }
-        token = strtok(NULL, "\n");
+
+        line_start = line_end + 1; 
     }
+
+    if (*line_start != '\0') {
+        User* user = (User*)malloc(sizeof(User));
+        char* role = (char*)malloc(sizeof(char));
+        parseUser(line_start, user);
+        free(role);
+
+        if (strcmp(user->email, email) == 0) {
+            return user;
+        }
+    }
+
     return NULL;
 }
+
