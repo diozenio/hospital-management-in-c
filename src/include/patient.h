@@ -27,6 +27,7 @@ typedef struct
 
 Patient *createPatient();
 Patient *findPatientByCpf(char *cpf);
+Patient *getAllPatients();
 
 int getPatientSeverity(enum PatientSeverity severity);
 void printPatient(Patient *patient);
