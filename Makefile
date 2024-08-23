@@ -52,7 +52,7 @@ clean:
 	rm -rf $(BIN_DIR)
 
 mock:
-	echo "1;username;email;123;ADMIN" > $(BIN_DIR)/users.txt
+	echo "1;Admin;admin;123;ADMIN\n2;Enfermeiro;enfermeiro;123;NURSE\n3;Medico;medico;123;DOCTOR" > $(BIN_DIR)/users.txt
 
 # Executar o programa
 run: $(BIN_DIR)/$(TARGET)
