@@ -4,6 +4,8 @@
 #include "../utils/menu.h"
 #include "../include/user.h"
 #include "../utils/system_functions.h"
+#include "admin.h"
+#include "nurse.h"
 
 void app(User* user);
 
