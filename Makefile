@@ -58,4 +58,4 @@ mock:
 run: $(BIN_DIR)/$(TARGET)
 	./$(BIN_DIR)/$(TARGET)
 
-.PHONY: all clean run
+.PHONY: all clean run mock	
