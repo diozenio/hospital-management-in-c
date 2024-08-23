@@ -36,12 +36,10 @@ enum PatientSeverity getPatientSeverityByNumber(int severity)
 
 void save_patient(Patient *patient)
 {
-    char *data = (char *)malloc(sizeof(char));
+    char* data = (char*)malloc(sizeof(char));
 
-    char severity_data[2];
-    sprintf(severity_data, "%d", getPatientSeverity(patient->severity));
-
-    sprintf(data, "%d;%s;%s;%s\n", patient->id, patient->cpf, patient->name, severity_data);
+    int severity = getPatientSeverity(patient->severity);
+    sprintf(data, "%d;%s;%s;%d\n", patient->id, patient->cpf, patient->name, severity);
     write_file("src/bin/patients.txt", data);
     free(data);
 }
@@ -75,7 +73,7 @@ void printPatient(Patient *patient)
     printf("ID: %d\n", patient->id);
     printf("CPF: %s\n", patient->cpf);
     printf("Nome: %s\n", patient->name);
-    printf("Gravidade: %i\n", getPatientSeverity(patient->severity));
+    printf("Gravidade: %i", getPatientSeverity(patient->severity));
 }
 
 void parsePatient(char *patientData, Patient *patient)
