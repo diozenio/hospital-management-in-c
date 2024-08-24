@@ -19,7 +19,7 @@ typedef struct {
 Node* createNode(Patient data);
 Queue* createQueue();
 void enqueue(Queue* queue, Patient data);
-void dequeue(Queue* queue);
+Patient* dequeue(Queue* queue);
 void printQueue(Queue* queue);
 int isEmpty(Queue* queue);
 void orderQueue(Queue* queue);

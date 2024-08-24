@@ -25,12 +25,17 @@ void enqueue(Queue* queue, Patient data) {
   queue->rear = newNode;
 }
 
-void dequeue(Queue* queue) {
-  if (queue->front == NULL) {
-    return;
+Patient* dequeue(Queue* queue) {
+  if (isEmpty(queue)) {
+    separator();
+    printf("A fila está vazia.");
+    separator();
+    pause_system();
+    return NULL;
   }
 
   Node* temp = queue->front;
+  Patient data = temp->data;
   queue->front = queue->front->next;
 
   if (queue->front == NULL) {
@@ -38,6 +43,7 @@ void dequeue(Queue* queue) {
   }
 
   free(temp);
+  return &data;
 }
 
 void printQueue(Queue* queue) {
