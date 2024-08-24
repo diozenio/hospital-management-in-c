@@ -22,5 +22,6 @@ void admin_app(User *user)
   char *welcomeMessage = createWelcomeMessage(user->name);
 
   menu(welcomeMessage, options, 2, &exitOption);
+  
   free(welcomeMessage);
 }

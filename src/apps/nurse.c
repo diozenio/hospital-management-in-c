@@ -10,7 +10,7 @@ void print_queue(void* queue) {
   printQueue((Queue*)queue);
 }
 
-void nurse_app() {
+void nurse_app(User* user) {
   Patient* patients = getAllPatients();
   Queue* queue = createQueue();
 
@@ -27,7 +27,13 @@ void nurse_app() {
     {"Visualizar fila de pacientes", print_queue, queue},
      };
 
+  char *welcomeMessage = createWelcomeMessage(user->name);
+
   option exitOption = {"Deslogar", NULL, NULL};
 
-  menu("Bem vindo", options, 2, &exitOption);
+  menu(welcomeMessage, options, 2, &exitOption);
+  
+  free(welcomeMessage);
+  free(patients);
+  free(queue);
 }

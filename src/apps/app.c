@@ -6,10 +6,10 @@ void app(User* user) {
       admin_app(user);
       break;
     case NURSE:
-      nurse_app();
+      nurse_app(user);
       break;
     case DOCTOR:
-      doctor_app();
+      doctor_app(user);
       break;
     default:
       printf("Acesso negado\n");

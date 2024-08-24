@@ -6,6 +6,7 @@
 #include "../include/patient.h"
 #include "../include/queue.h"
 #include "../utils/system_functions.h"
+#include "../utils/welcome_message.h"
 
 void doctor_app();
 

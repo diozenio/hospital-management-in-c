@@ -18,7 +18,7 @@ void view_untreated_patients(void* queue) {
   printQueue((Queue*)queue);
 }
 
-void doctor_app(){
+void doctor_app(User* user) {
   Patient* patients = getAllPatients();
   Queue* queue = createQueue();
 
@@ -35,7 +35,13 @@ void doctor_app(){
     {"Visualizar fila de pacientes", view_untreated_patients, queue},
   };
 
+  char *welcomeMessage = createWelcomeMessage(user->name);
+
   option exitOption = {"Deslogar", NULL, NULL};
 
-  menu("Bem vindo", options, 2, &exitOption);
+  menu(welcomeMessage, options, 2, &exitOption);
+
+  free(welcomeMessage);
+  free(patients);
+  free(queue);
 }

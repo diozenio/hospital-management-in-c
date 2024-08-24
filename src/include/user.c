@@ -31,7 +31,7 @@ User* createUser(enum UserRole role) {
     User* user = (User*)malloc(sizeof(User));
     separator();
     
-    printf("Digite o nome completo do usuário: ");
+    printf("Digite o nome de usuário: ");
     fgets(user->name, sizeof(user->name), stdin);
     user->name[strcspn(user->name, "\n")] = 0;
 
