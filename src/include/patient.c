@@ -112,6 +112,12 @@ Patient *findPatientByCpf(char *cpf)
 
 Patient *getAllPatients(){
     char *data = read_file("src/bin/patients.txt");
+
+    if (data == NULL)
+    {
+        return NULL;
+    }
+
     char *line_start = data;
     char *line_end;
     Patient *patients = (Patient *)malloc(sizeof(Patient));
