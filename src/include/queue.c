@@ -51,7 +51,9 @@ void printQueue(Queue* queue) {
   int i = 1;
 
   if(isEmpty(queue)) {
-    printf("A fila está vazia.\n");
+    separator();
+    printf("A fila está vazia.");
+    separator();
     pause_system();
     return;
   }
@@ -67,6 +69,8 @@ void printQueue(Queue* queue) {
     pause_system();
     temp = temp->next;
   }
+
+  free(temp);
 }
 
 int isEmpty(Queue* queue) {
