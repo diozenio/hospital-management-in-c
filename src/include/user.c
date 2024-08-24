@@ -21,7 +21,8 @@ enum UserRole getUserRoleByString(char* role) {
 }
 
 void save_user(User* user) {
-    char* data = (char*)malloc(sizeof(char));
+    int buffer_size = snprintf(NULL, 0, "%d;%s;%s;%s;%s\n", user->id, user->name, user->email, user->password, getUserRole(user->role)) + 1;
+    char *data = (char *)malloc(buffer_size);
     sprintf(data, "%d;%s;%s;%s;%s\n", user->id, user->name, user->email, user->password, getUserRole(user->role));
     write_file("src/bin/users.txt", data);
     free(data);
