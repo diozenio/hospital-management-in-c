@@ -143,7 +143,14 @@ Patient *getAllPatients()
         parsePatient(line_start, &patient);
         patients = (Patient *)realloc(patients, (i + 1) * sizeof(Patient));
         patients[i] = patient;
+        i++;
     }
+
+    // Adiciona o paciente sentinela
+    patients = (Patient *)realloc(patients, (i + 1) * sizeof(Patient));
+    Patient sentinel = {0}; // Inicializa todos os campos com zero
+    sentinel.id = 0; // Garante que o ID seja 0
+    patients[i] = sentinel;
 
     return patients;
 }
