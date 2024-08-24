@@ -78,6 +78,11 @@ void parseUser(char* userData, User* user) {
 
 User* findUserByEmail(char* email) {
     char* data = read_file("src/bin/users.txt");
+
+    if (data == NULL) {
+        return NULL;
+    }
+
     char* line_start = data;
     char* line_end;
     
