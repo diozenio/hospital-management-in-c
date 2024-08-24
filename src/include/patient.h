@@ -31,6 +31,7 @@ Patient *findPatientByCpf(char *cpf);
 Patient *getAllPatients();
 
 int getPatientSeverity(enum PatientSeverity severity);
+enum PatientSeverity getPatientSeverityByNumber(int severity);
 void printPatient(Patient *patient);
 void editPatientSeverity(Patient *patient);
 
