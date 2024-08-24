@@ -70,8 +70,6 @@ void printQueue(Queue* queue) {
     pause_system();
     temp = temp->next;
   }
-
-  free(temp);
 }
 
 int isEmpty(Queue* queue) {
