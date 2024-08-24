@@ -121,17 +121,17 @@ Patient *getAllPatients()
 
     char *line_start = data;
     char *line_end;
-    Patient *patients = (Patient *)malloc(sizeof(Patient));
+    Patient *patients = NULL;
     int i = 0;
 
     while ((line_end = strchr(line_start, '\n')) != NULL)
     {
         *line_end = '\0';
 
-        Patient *patient = (Patient *)malloc(sizeof(Patient));
-        parsePatient(line_start, patient);
+        Patient patient;
+        parsePatient(line_start, &patient);
         patients = (Patient *)realloc(patients, (i + 1) * sizeof(Patient));
-        patients[i] = *patient;
+        patients[i] = patient;
         i++;
 
         line_start = line_end + 1;
@@ -139,10 +139,10 @@ Patient *getAllPatients()
 
     if (*line_start != '\0')
     {
-        Patient *patient = (Patient *)malloc(sizeof(Patient));
-        parsePatient(line_start, patient);
+        Patient patient;
+        parsePatient(line_start, &patient);
         patients = (Patient *)realloc(patients, (i + 1) * sizeof(Patient));
-        patients[i] = *patient;
+        patients[i] = patient;
     }
 
     return patients;
