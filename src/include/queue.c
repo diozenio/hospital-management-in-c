@@ -34,8 +34,9 @@ Patient* dequeue(Queue* queue) {
     return NULL;
   }
 
-  Node* temp = queue->front;
-  Patient data = temp->data;
+  Node *temp = queue->front;
+  Patient *data = malloc(sizeof(Patient));
+  *data = temp->data;
   queue->front = queue->front->next;
 
   if (queue->front == NULL) {
@@ -43,7 +44,7 @@ Patient* dequeue(Queue* queue) {
   }
 
   free(temp);
-  return &data;
+  return data;
 }
 
 void printQueue(Queue* queue) {
