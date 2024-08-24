@@ -146,3 +146,45 @@ Patient *getAllPatients(){
 
     return patients;
 }
+
+void deletePatient(Patient *patient)
+{
+    char *data = read_file("src/bin/patients.txt");
+    char *line_start = data;
+    char *line_end;
+    char *new_data = (char *)malloc(sizeof(char));
+    while ((line_end = strchr(line_start, '\n')) != NULL)
+    {
+        *line_end = '\0';
+        Patient *current_patient = (Patient *)malloc(sizeof(Patient));
+        parsePatient(line_start, current_patient);
+        if (current_patient->id != patient->id)
+        {
+            strcat(new_data, line_start);
+            strcat(new_data, "\n");
+        }
+        line_start = line_end + 1;
+    }
+    if (*line_start != '\0')
+    {
+        Patient *current_patient = (Patient *)malloc(sizeof(Patient));
+        parsePatient(line_start, current_patient);
+        if (current_patient->id != patient->id)
+        {
+            strcat(new_data, line_start);
+            strcat(new_data, "\n");
+        }
+    }
+    write_file("src/bin/patients.txt", new_data);
+    free(new_data);
+}
+
+void editPatientSeverity(Patient *patient)
+{
+    printf("Digite o índice numérico que corresponde à gravidade do paciente: [1] - Baixa, [2] - Média, [3] - Alta ou [4] Crítica: ");
+    int severity;
+    scanf("%d", &severity);
+    patient->severity = getPatientSeverityByNumber(severity);
+    save_patient(patient);
+}
+

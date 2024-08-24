@@ -26,10 +26,12 @@ typedef struct
 } Patient;
 
 Patient *createPatient();
+void deletePatient(Patient *patient);
 Patient *findPatientByCpf(char *cpf);
 Patient *getAllPatients();
 
 int getPatientSeverity(enum PatientSeverity severity);
 void printPatient(Patient *patient);
+void editPatientSeverity(Patient *patient);
 
 #endif
