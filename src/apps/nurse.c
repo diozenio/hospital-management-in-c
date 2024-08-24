@@ -14,11 +14,13 @@ void nurse_app() {
   Patient* patients = getAllPatients();
   Queue* queue = createQueue();
 
-  for (int i = 0; patients[i].id != 0; i++) {
-    enqueue(queue, patients[i]);
-  }
+  if(patients != NULL) {
+    for (int i = 0; patients[i].id != 0; i++) {
+      enqueue(queue, patients[i]);
+    }
 
-  orderQueue(queue);
+    orderQueue(queue);
+  }
 
   option options[] = {
     {"Encaminhar um novo paciente", create_patient, queue},
