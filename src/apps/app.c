@@ -8,6 +8,9 @@ void app(User* user) {
     case NURSE:
       nurse_app();
       break;
+    case DOCTOR:
+      doctor_app();
+      break;
     default:
       printf("Acesso negado\n");
       break;

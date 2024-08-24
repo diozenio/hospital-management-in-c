@@ -6,6 +6,7 @@
 #include "../utils/system_functions.h"
 #include "admin.h"
 #include "nurse.h"
+#include "doctor.h"
 
 void app(User* user);
 
