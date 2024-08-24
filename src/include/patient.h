@@ -20,7 +20,7 @@ enum PatientSeverity
 typedef struct
 {
     int id;
-    char cpf[11];
+    char cpf[12];
     char name[100];
     enum PatientSeverity severity;
 } Patient;
