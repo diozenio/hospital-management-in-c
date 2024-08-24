@@ -36,8 +36,8 @@ enum PatientSeverity getPatientSeverityByNumber(int severity)
 
 void save_patient(Patient *patient)
 {
-    char* data = (char*)malloc(sizeof(char));
-
+    int buffer_size = snprintf(NULL, 0, "%d;%s;%s;%d\n", patient->id, patient->cpf, patient->name, getPatientSeverity(patient->severity)) + 1;
+    char *data = (char *)malloc(buffer_size);
     int severity = getPatientSeverity(patient->severity);
     sprintf(data, "%d;%s;%s;%d\n", patient->id, patient->cpf, patient->name, severity);
     write_file("src/bin/patients.txt", data);
@@ -110,7 +110,8 @@ Patient *findPatientByCpf(char *cpf)
     return NULL;
 }
 
-Patient *getAllPatients(){
+Patient *getAllPatients()
+{
     char *data = read_file("src/bin/patients.txt");
 
     if (data == NULL)
@@ -126,7 +127,7 @@ Patient *getAllPatients(){
     while ((line_end = strchr(line_start, '\n')) != NULL)
     {
         *line_end = '\0';
-        
+
         Patient *patient = (Patient *)malloc(sizeof(Patient));
         parsePatient(line_start, patient);
         patients = (Patient *)realloc(patients, (i + 1) * sizeof(Patient));
@@ -187,4 +188,3 @@ void editPatientSeverity(Patient *patient)
     patient->severity = getPatientSeverityByNumber(severity);
     save_patient(patient);
 }
-
