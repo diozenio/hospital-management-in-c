@@ -146,10 +146,9 @@ Patient *getAllPatients()
         i++;
     }
 
-    // Adiciona o paciente sentinela
     patients = (Patient *)realloc(patients, (i + 1) * sizeof(Patient));
-    Patient sentinel = {0}; // Inicializa todos os campos com zero
-    sentinel.id = 0; // Garante que o ID seja 0
+    Patient sentinel = {0};
+    sentinel.id = 0;
     patients[i] = sentinel;
 
     return patients;
