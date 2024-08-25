@@ -60,6 +60,7 @@ void update_hospitalized_patient(void *hospitalizedQueue)
     }
 
     Queue *hospitalizedPatients = (Queue *)hospitalizedQueue;
+
     printf("Digite o CPF do paciente que deseja atualizar: ");
     char cpf[100];
     scanf("%s", cpf);
@@ -68,8 +69,8 @@ void update_hospitalized_patient(void *hospitalizedQueue)
     Node *temp = hospitalizedPatients->front;
     while (temp != NULL)
     {
-        Patient patient = temp->data;
-        if (strcmp(patient.cpf, cpf) == 0)
+        Patient *patient = &temp->data;
+        if (strcmp(patient->cpf, cpf) == 0)
         {
             printf("Digite o índice numérico que corresponde à gravidade do paciente: [0] - Sem danos, [1] - Baixa, [2] - Média, [3] - Alta ou [4] Crítica: ");
             int severity;
@@ -78,15 +79,21 @@ void update_hospitalized_patient(void *hospitalizedQueue)
             {
                 Patient *patient = dequeue(hospitalizedPatients);
                 printf("Paciente %s teve alta.\n", patient->name);
+                pause_system();
                 free(patient);
-                break;
+                return;
             }
 
-            patient.severity = getPatientSeverityByNumber(severity);
+            patient->severity = getPatientSeverityByNumber(severity);
             break;
         }
         temp = temp->next;
     }
+
+    separator();
+    printf("Paciente não encontrado.");
+    separator();
+    pause_system();
 }
 
 void view_hospitalized_patients(void *hospitalizedPatients)
