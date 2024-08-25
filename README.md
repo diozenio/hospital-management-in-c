@@ -29,7 +29,7 @@ O projeto está organizado em várias pastas:
 1. Clone o repositório:
 
    ```
-   git clone https://github.com/seu-usuario/hospital-management-in-c.git
+   git clone https://github.com/diozenio/hospital-management-in-c.git
    cd hospital-management-in-c
    ```
 
